@@ -9,8 +9,12 @@ In computer programming terms, an algorithm is a set of well-defined instruction
 ## Algorithms
 Lista algoritmi?
 
- ### Quicksort
- ###
+ ### Insertion sort
+ ### Selection sort
+ ### Binary search
+ ### Merge sort
+ ### Quick sort
+ ### Heap sort
 
 ## Data structures
 Data structure is a storage that is used to store and organize data. It is a way of arranging data on a computer so that it can be accessed and updated efficiently.
@@ -25,7 +29,8 @@ Basically, data structures are divided into two categories:
          return i
  ```
 
- ### List
- ### Queue
- ### Stack
- ### Hash tables
+ ### Binary heap
+ ### 
+ ### 
+ ### 
+ ### 
