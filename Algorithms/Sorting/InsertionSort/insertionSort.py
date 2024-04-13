@@ -9,6 +9,7 @@
 #      average: O(n^2)
 
 
+# NOT IN PLACE !!!
 def insertionSort(A):
     # per tutta la parte di array non sortato (il primo elem. lo e)
     for i in range(1, len(A)):
