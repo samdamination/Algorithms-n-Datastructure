@@ -12,6 +12,7 @@
 # (se la coppia è fuori posizione li swappa). A ogni nuova iteration
 # la parte finale dell'array è sempre sorted
 # in questo caso si parte dal fondo
+# Basically a variant of insertion sort
 
 
 
