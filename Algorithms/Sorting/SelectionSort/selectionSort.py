@@ -18,7 +18,7 @@ def selectionSort(A):
                 min = j
         A[i], A[min] = A[min], A[i]
         # print(A) # to check intermediate steps
-    return A
+    
 
 
 # versione bibbia identica
@@ -27,5 +27,6 @@ def selectionSort(A):
 
 ### TESTS ###
 A = [5, 6, 12, 8, 4, 10, 3, 12, 11, 1]
-
+B = [-1, 3, 90, 43, 2, 1, 0, -22, 0, -1, -7]
 print(selectionSort(A))
+print(selectionSort(B))

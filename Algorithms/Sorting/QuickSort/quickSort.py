@@ -13,7 +13,8 @@ def partition(A, begin, end):
     q = begin
     pivot = A[end]
     #print("pivot", pivot)
-    for i in range(begin, end+1):
+    #print(A)
+    for i in range(begin, end+1):       # i itera continuando ad andare avanti, q segna l'ultimo non sorted element
         if A[i] <= pivot:
             A[i], A[q] = A[q], A[i] # swap
             q += 1
@@ -37,6 +38,8 @@ def quicksort(A, begin, end):
 A1 = [3,2,1,4,5,0,8,7]
 A2 = [10,9,8,7,6,5,4,3,2,1]
 A3 = [10,0,9,2,8,3,3,7,3,4,6,5]
+B=[-1,2,77,90,0,1,-55,-33,-121,0,3,7]
 print(quicksort(A1, 0, len(A1)-1))
 print(quicksort(A2, 0, len(A2)-1))
 print(quicksort(A3, 0, len(A3)-1))
+print(quicksort(B, 0, len(B)-1))

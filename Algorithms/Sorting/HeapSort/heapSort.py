@@ -35,7 +35,7 @@ def max_heapify(A, i, heap_size):
 # The elements in the subarray A[floor(n/2) + 1 ... n] are all leaves
 # Because a tree that is full has as many leaves as nodes remaining
 # Therefore the leaves themselves are valid 1-element heaps (their sub-tree, which is not existing,
-# is stays in the heap conditions). Therefore we need to "heapify" all nodes BOTTOM-UP from
+# it stays in the heap conditions). Therefore we need to "heapify" all nodes BOTTOM-UP from
 # A[floor(n/2)] to A[0]
 def build_max_heap(A):
     i = int((math.floor(len(A)-1)) / 2)
@@ -64,3 +64,9 @@ def heap_sort(A):
 
 
 # TESTS
+A = [5, 6, 12, 8, 4, 10, 3, 12, 11, 1]
+B = [-1, 3, 90, 43, 2, 1, 0, -22, 0, -1, -7]
+heap_sort(A)
+heap_sort(B)
+print(A)
+print(B)

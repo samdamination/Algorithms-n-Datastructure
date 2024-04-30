@@ -29,7 +29,7 @@ def dequeue():
         return x
     
 
-# for updatinf Front, Back after a dequeue, enqueue
+# for updating Front, Back after a dequeue, enqueue
 def next(p):
     global Q
     p = p + 1                   # updating of 1

@@ -1,6 +1,8 @@
 ########################################
 ###    BINARY SEARCH - Algorithm     ###
 ########################################
+import math
+
 
 ## INTRO ##
 # Complexity: T(n) = T(n/3) + O(1)
@@ -13,7 +15,7 @@ def binarySearch(A, x):
     l = 0
     r = len(A)
     while l < r:
-        m = (l + r) // 2
+        m = math.floor(l + r) // 2
         if A[m] == x:
             return True
         elif A[m] < x:
