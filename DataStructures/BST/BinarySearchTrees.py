@@ -15,7 +15,7 @@ class Node:
 
 # printing tree    
 def bst_in_order_walk(t):   # complexity O(n) can't obv. do better 
-    if t != None:           # base case: if t is non we do nothing
+    if t != None:           # base case: if t is none we do nothing
         bst_in_order_walk(t.left)
         print(t.key)
         bst_in_order_walk(t.right)
@@ -32,7 +32,7 @@ def bst_successor(t):
     if t == None:
         return None
     if t.right != None:
-        return bst_min(t.right)     # se mettiamo che bst min ritorna un nodo (non key)
+        return bst_min(t.right)     # se mettiamo che bst min ritorna un nodo (e non key)
     p = t.parent
     while p != None and t == p.right:
         t = p
@@ -57,7 +57,7 @@ def bst_search(t, k):
     elif t.key > k:
         return bst_search(t.left)
     else:
-        return bst_search(t.right) """ # ??
+        return bst_search(t.right) """ # recursive version
 
 def bst_insert(t, k):       # per inserire una key in console si dovrà fare: t = bst_insert(t, key) pk
     if t == None:           # ritorna un tree, non lo modifica (complexity: h of tree)
@@ -92,18 +92,18 @@ def bst_height(t):
 def right_rotate(x):        # see image
     assert x.left != None   # returns the tree from y (so you have to do t = right_rotate(t) to rotate head)
     y = x.left
-    x.left = y.right
+    x.left = y.right  # !!! single threades (no parent link)
     y.right = x
     return y
 
 def left_rotate(x):        # simply swap left-right
     assert x.right != None
     y = x.right
-    x.right = y.left
+    x.right = y.left # !!! single threades (no parent link)
     y.left = x
     return y
 
-def root_insert(t, k):
+def root_insert(t, k):      # ??
     if t == None:
         return Node(k)
     if k <= t.key:

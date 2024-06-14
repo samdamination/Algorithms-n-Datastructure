@@ -30,27 +30,27 @@ def read_undirected_graph(filename):
 
 
 # ------------- auxiliary: Priority Queue, Heap -----------------
-def enqueue(Q, x):          # simple insertion in a heap
+def enqueue(Q, x):          
     Q.append(x)
     i = len(Q) - 1
     while i > 0:
         p = (i - 1) // 2
-        if Q[p] <= Q[i]:    # p is parent
+        if Q[p] <= Q[i]:    
             return
         Q[p], Q[i] = Q[i], Q[p]
         i = p
 
-def extract_min(Q):         # basically dequeue (extract from heap)
+def extract_min(Q):         
     x = Q[0]
-    Q[0] = Q[-1]            # take last element and put on start
+    Q[0] = Q[-1]            
     Q.pop()
-    i = 0                   # node where we start from
+    i = 0                   
     while True:
-        m = i               # keeps track of currrent minimum
+        m = i               
         if 2*i + 1 < len(Q):
             if Q[m] > Q[2*i+1]:
                 m = 2*i + 1
-            if 2*i + 2 < len(Q):          # if statement nested bc if 2*i+1<len(Q) false also 2*i+2<len(Q)
+            if 2*i + 2 < len(Q):          
                 if Q[m] > Q[2*i+2]:     
                     m = 2*i + 2
         if m == i:
@@ -62,40 +62,60 @@ def extract_min(Q):         # basically dequeue (extract from heap)
 
 
 ## INTRO:
-# Using a Queue, where we put triples (cost used to do the sorting,
-# vertex we are reaching, vertex we are coming from)
+# Copy from Prim and change one line
 
 ## ALGORITHM:
-def prim(G):
+def dijkstra(G):
     n = len(G)
     T = [None]*n
     for u in range(n):
         T[u] = []
 
     Q = []
-    enqueue(Q, (0.0, 0, None))      # initially we have a cost of 0.0 to connect vertex 0 from None (predecessor)
+    enqueue(Q, (0.0, 0, None))      
 
-    V = [False]*n                   # visited vertices
+    V = [False]*n                   
 
-    while len(Q) != 0:              # main loop of the algorithm (similar to common algo structure)
-        c, v, u = extract_min(Q)    # extract c, v, u (see intro description). edge connect V from U (predecessor)
-        if V[v]:                    # if we already visited v we go on
+    while len(Q) != 0:              
+        c, v, u = extract_min(Q)    
+        if V[v]:                    
             continue
-        if u != None:               # we need it for first case (if not strarting vertex)
+        if u != None:               
             T[u].append((v, c))
             T[v].append((u, c))
-            #V[u] = True                #not needed ?? (! because predecessor: means already visited)
         V[v] = True
-        for v2, c2 in G[v]:         # for each neighbors of the vertex v we just added, we insert them in queue with their cost
+        for v2, c2 in G[v]:        
             if not V[v2]:
-                enqueue(Q, (c2, v2, v))
+                enqueue(Q, (c + c2, v2, v)) # only difference c + c2
     return T
             
 
 
 ## TESTS:
+"""Input file format:
+a e 1
+e i 1
+a f 2
+f i 1
+i j 3
+f b 1
+f g 3
+b c 1
+b g 3
+j g 2
+d g 1
+c g 3
+d h 2
+g h 1
+g k 3
+h k 3
+h m 3
+k m 1
+c d 2
+"""
 G, V, Idx = read_undirected_graph('/Users/samdamusi/Desktop/Algorithms-n-Datastructure/Algorithms/Graph/testfiles/graphCost1.txt')
-T = prim(G)
+print(Idx)
+T = dijkstra(G)
 print(T)
 for u in range(len(T)):     # printing the seq of edges with cost
     for v, c in T[u]:

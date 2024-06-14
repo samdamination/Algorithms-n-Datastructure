@@ -17,11 +17,7 @@ def set_union(s1, s2):          # checking the 2 repres. of 2 set are different
 
 
 
-## INTRO
-# Reading an undirected graph with costs for edges
-
-## ALGORITHMS
-# like in read_graph
+# ----------- read undir. graph  import -----------
 def add_vertex(Adj, Name, Idx, u_name): 
     if u_name in Idx:
         u = Idx[u_name]
@@ -46,6 +42,7 @@ def read_undirected_graph(filename):
         Adj[v].append((u, c))
     f.close()
     return Adj, Name, Idx
+# ----------- ----------- ----------- -----------
 
 
 
@@ -61,15 +58,15 @@ def read_undirected_graph(filename):
 def kruskal(G):
     n = len(G)
     E = []
-    for u in range(n):
+    T = [None]*n                            # solution (Adj graph spanning tree)
+    for u in range(n):                      # transforming Adj graph into set of edges (cost, u, v)
         for v, c in G[u]:
-            if u < v:
+            if u < v:                       # questo perchè se no ci sono 2 entry (undirected)
                 E.append((c, u, v))
-    E.sort()
+    E.sort()                                # sorted in base al primo elemento del triplet (in this case the cost)
     S = [None]*n
     for u in range(n):
         S[u] = disjoint_set()               # create a disjoint set for each element
-    T = [None]*n
     for u in range(n):
         T[u] = []
     for c, u, v in E:                             # scan the edges in sorted order
@@ -99,3 +96,58 @@ for u in range(len(T)):
 
                
 
+# E set before sort
+[(1.0, 0, 1),
+(2.0, 0, 3), 
+(1.0, 1, 2), 
+(1.0, 2, 3), 
+(3.0, 2, 4), 
+(1.0, 3, 5), 
+(3.0, 3, 6), 
+(2.0, 4, 6), 
+(1.0, 5, 7), 
+(3.0, 5, 6), 
+(1.0, 6, 8), 
+(3.0, 6, 7), 
+(1.0, 6, 9), 
+(3.0, 6, 10), 
+(2.0, 7, 8), 
+(2.0, 8, 9), 
+(3.0, 9, 10), 
+(3.0, 9, 11), 
+(1.0, 10, 11)]
+
+# E set after sort
+[(1.0, 0, 1), 
+ (1.0, 1, 2), 
+ (1.0, 2, 3), 
+ (1.0, 3, 5), 
+ (1.0, 5, 7), 
+ (1.0, 6, 8), 
+ (1.0, 6, 9), 
+ (1.0, 10, 11), 
+ (2.0, 0, 3), 
+ (2.0, 4, 6), 
+ (2.0, 7, 8), 
+ (2.0, 8, 9), 
+ (3.0, 2, 4), 
+ (3.0, 3, 6), 
+ (3.0, 5, 6), 
+ (3.0, 6, 7), 
+ (3.0, 6, 10), 
+ (3.0, 9, 10), 
+ (3.0, 9, 11)]
+
+# Graph G as input
+[[(1, 1.0), (3, 2.0)], 
+[(0, 1.0), (2, 1.0)], 
+[(1, 1.0), (3, 1.0), (4, 3.0)], 
+[(0, 2.0), (2, 1.0), (5, 1.0), (6, 3.0)], 
+[(2, 3.0), (6, 2.0)], 
+[(3, 1.0), (7, 1.0), (6, 3.0)], 
+[(3, 3.0), (5, 3.0), (4, 2.0), (8, 1.0), (7, 3.0), (9, 1.0), (10, 3.0)], 
+[(5, 1.0), (6, 3.0), (8, 2.0)], 
+[(6, 1.0), (9, 2.0), (7, 2.0)], 
+[(8, 2.0), (6, 1.0), (10, 3.0), (11, 3.0)], 
+[(6, 3.0), (9, 3.0), (11, 1.0)], 
+[(9, 3.0), (10, 1.0)]]

@@ -30,7 +30,7 @@ def max_heapify(A, i, heap_size):
         largest = r
     if largest != i:
         A[i], A[largest] = A[largest], A[i] # swap
-        max_heapify(A, largest, heap_size)
+        max_heapify(A, largest, heap_size)  # largest è rimasto l'indice del figlio più grande
 
 # The elements in the subarray A[floor(n/2) + 1 ... n] are all leaves
 # Because a tree that is full has as many leaves as nodes remaining
@@ -46,9 +46,9 @@ def build_max_heap(A):
 # Given an array then make it be a max-heap.
 # We know that A[0] will now hold the biggest number in the heap.
 # For that reason we swap A[0] with the last element in the array.
-# Now the biggest number will be at the end of the array, but the max_heap is not guarantee
+# Now the biggest number will be at the end of the array, but the max_heap is not guaranteed
 # to follow the conditions from position 0. For that reason we decrease the heap size of 1
-# ( because we dont consider the last element anymore, it is at its final position) and heapify the
+# ( because we dont consider the last elemen t anymore, it is at its final position) and heapify the
 # remaining elements.
 def heap_sort(A):
     build_max_heap(A)

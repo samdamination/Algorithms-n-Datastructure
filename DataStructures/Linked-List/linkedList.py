@@ -64,7 +64,7 @@ def list_insert_after(v, pos):
 def list_print_forward():          
     global sentinel
     l = sentinel.next                   # //
-    while l != None:
+    while l != None:                    # error?!: non esiste un next None ma sentinel
         print(l.value)
         l = l.next
 

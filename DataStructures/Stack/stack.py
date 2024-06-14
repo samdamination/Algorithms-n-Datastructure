@@ -34,3 +34,10 @@ def is_empty():
 
 
 
+# TESTS --
+push(5)
+push(10)
+push(-1)
+print(S)
+print(pop())
+print(pop())

@@ -27,8 +27,8 @@ def read_graph(f):        # f for file
             continue
         u_name = L[0]
         if u_name not in Idx:
-            u = len(Name)
-            Idx[u_name] = u
+            u = len(Name)           
+            Idx[u_name] = u         # a ogni nome viene assengato un numero in ordine ('b' : 3 for example)
             Name.append(u_name)
             Adj.append([])          # u becomes from char to number (ex: from 'a' to 1)
         else:                       # can also put u = len(Name) at top and Idx[u_name] = u
@@ -78,7 +78,7 @@ print(Idx)
 # You create 2 datastructure: Distance, Predecessors
 
 ## ALGORITHM
-def bfs(G, s):          # s is start (names don't exist anymore here, just concerns us the id/number node)
+def bfs(G, s):          # s is start (names don't exist anymore here, just concerns us the id/number node -> so s is vertex number on Adj)
     n = len(G)          # G is the Adj list, s (and below u) are id/numer of the node (node 1,...)
     D = [None]*n        # Distance vector
     P = [None]*n        # Path vector (pi, stores predecessors), can add P[s] = s se si vuole s al posto di None come predecessor
@@ -123,7 +123,7 @@ print(P)
 ## INTRO
 # Datastructures are same, DFS uses a Stack instead of a Queue
 # You create 2 datastructure: Discovery, Finish (time, intended as number of steps)
-# Here called as In and Out
+# If you sort by finish time you have topological sorting
 
 ## ALGORITHM
 def dfs(G):

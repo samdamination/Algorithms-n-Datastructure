@@ -4,8 +4,8 @@
 ## DATASTRUCTURE:
 class disjoint_set:
     def __init__(self):
-        self.parent = self          # at the beginning, when u create 1 elem. disjoint set it
-                                    # point to itself (it's its own representative)
+        self.parent = self          # at the beginning, when you create 1 elem. disjoint set it
+                                    # points to itself (it's its own representative)
 
 
 def set_find(s):                # function to get the representative of a node
