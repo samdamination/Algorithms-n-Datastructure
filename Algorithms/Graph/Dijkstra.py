@@ -88,6 +88,30 @@ def dijkstra(G):
             if not V[v2]:
                 enqueue(Q, (c + c2, v2, v)) # only difference c + c2
     return T
+
+# with source node
+def dijkstra(G, source):
+    n = len(G)
+    D = [float('inf')] * n
+    D[source] = 0
+
+    Q = []
+    enqueue(Q, (0.0, source, None))
+
+    V = [False] * n
+
+    while len(Q) != 0:
+        c, v, u = extract_min(Q)
+        if V[v]:
+            continue
+        V[v] = True
+        for v2, c2 in G[v]:
+            if not V[v2] and D[v] + c2 < D[v2]:
+                D[v2] = D[v] + c2
+                enqueue(Q, (D[v2], v2, v))
+    
+    return D
+
             
 
 
